@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import config from "./config";
@@ -11,7 +11,7 @@ app.listen(config.port, () => {
   console.log(` server is running on port ${config.port}`);
 });
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send({
     success: true,
     message: "Mango is here",
