@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "./user.model";
 
-export const registerUser = async (req: Request, res: Response) => {
+const registerUser = async (req: Request, res: Response) => {
   const payload = req.body;
   const user = new User(payload);
 
@@ -13,3 +13,14 @@ export const registerUser = async (req: Request, res: Response) => {
     data,
   });
 };
+
+const getUsers = async (req: Request, res: Response) => {
+  const data = await User.find();
+  res.send({
+    success: true,
+    message: "User retrieved successfully",
+    data,
+  });
+};
+
+export { registerUser, getUsers };
