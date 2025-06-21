@@ -6,3 +6,5 @@ const routes = Router();
 
 routes.use("/user", userRouts);
 routes.use("/mango", mangoRoutes);
+
+export default routes;

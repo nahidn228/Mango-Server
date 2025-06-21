@@ -15,13 +15,14 @@ const mangoSchema = new Schema<IMango>(
     },
     price: { type: String, required: true, min: 0 },
     stock: { type: String, min: 0, required: true },
-    origin: { type: String },
+    origin: { type: String, default: "unknown" },
     season: {
       type: String,
       enum: {
         values: ["fall", "summer", "winter"],
         message: "{VALUE} is not acceptable",
       },
+      required: true,
     },
   },
   { timestamps: true }
