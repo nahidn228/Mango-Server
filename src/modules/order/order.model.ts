@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 import { IOrder } from "./order.interface";
 
 const orderAddressSchema = new Schema({
@@ -19,6 +19,10 @@ const orderModel = new Schema<IOrder>({
   //   state: { type: String, required: true },
   //   country: { type: String, required: true },
   // },
-  address: { type: orderAddressSchema, required: true  },
+  address: { type: orderAddressSchema, required: true },
   status: { type: String, required: true },
 });
+
+const Order = model("Order", orderModel);
+
+export default Order;
