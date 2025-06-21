@@ -3,7 +3,7 @@ import { getUsers, registerUser } from "./user.controller";
 
 const userRouts = Router();
 
-userRouts.post("/user", registerUser);
-userRouts.get("/user", getUsers);
+userRouts.post("/", registerUser);
+userRouts.get("/", getUsers);
 
 export default userRouts;
