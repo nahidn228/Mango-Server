@@ -3,10 +3,16 @@ import Order from "./order.model";
 
 const createOrder = async (req: Request, res: Response) => {
   try {
-    const data = req.body;
-    const order = await Order.create(data);
+    // const order = await Order.create(req.body);
+
+    const order = new Order(req.body);
+    const orderStock = order.checkStock(req.body.mango);
+    if (!orderStock) throw new Error("Insufficient Stock");
+
+    await order.save();
+
     res.send({
-      success: false,
+      success: true,
       message: "order placed successful",
       order,
     });
@@ -20,9 +26,9 @@ const createOrder = async (req: Request, res: Response) => {
 };
 const gateOrders = async (req: Request, res: Response) => {
   try {
-    const order = await Order.find();
+    const order = await Order.find().populate("user").populate("mango");
     res.send({
-      success: false,
+      success: true,
       message: "order getting successful",
       order,
     });

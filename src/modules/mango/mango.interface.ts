@@ -3,7 +3,7 @@ export interface IMango {
   variety: string;
   unit: "kg" | "pound";
   price: string;
-  stock: string;
+  stock: number;
   origin: string;
   season: "fall" | "summer" | "winter";
 }

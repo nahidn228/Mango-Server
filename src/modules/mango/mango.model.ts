@@ -14,7 +14,7 @@ const mangoSchema = new Schema<IMango>(
       required: true,
     },
     price: { type: String, required: true, min: 0 },
-    stock: { type: String, min: 0, required: true },
+    stock: { type: Number, min: 0, required: true },
     origin: { type: String, default: "unknown" },
     season: {
       type: String,
@@ -28,6 +28,6 @@ const mangoSchema = new Schema<IMango>(
   { timestamps: true }
 );
 
-const Mango = model<IMango>("Mango", mangoSchema);
+const Mango = model<IMango>("mango", mangoSchema);
 
 export default Mango;

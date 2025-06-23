@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Model, Types } from "mongoose";
 
 export interface IOrder {
   user: Types.ObjectId;
@@ -13,3 +13,8 @@ export interface IOrder {
     country: string;
   };
 }
+
+export interface IOrderMethods {
+  checkStock(id: string): Promise<any>;
+}
+export interface IOrderModel extends Model<IOrder, {}, IOrderMethods> {}

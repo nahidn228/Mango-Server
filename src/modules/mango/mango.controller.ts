@@ -61,7 +61,7 @@ const updateMango = async (req: Request, res: Response) => {
     });
     res.send({
       success: true,
-      message: "Mango update successfully",
+      message: "Mango i updated successfully",
       mango,
     });
   } catch (error) {
