@@ -24,7 +24,7 @@ const orderSchema = new Schema<IOrder, IOrderModel, IOrderMethods>(
     address: { type: orderAddressSchema, required: true },
     status: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 );
 
 orderSchema.pre("save", async function () {

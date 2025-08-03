@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import Mango from "./mango.model";
+import { MangoService } from "./mango.service";
 
 const createMango = async (req: Request, res: Response) => {
   try {
-    const data = await Mango.create(req.body);
+    const data = await MangoService.createMangoIntoDB(req.body);
 
     res.send({
       success: true,
@@ -95,5 +96,5 @@ export const mangoController = {
   getMango,
   getMangoById,
   updateMango,
-  deleteMango
+  deleteMango,
 };
