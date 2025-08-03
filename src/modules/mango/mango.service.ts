@@ -19,21 +19,24 @@ const getAllMangoFromDB = async () => {
   return data;
 };
 
-const updateMangoByIdFromDB = async(mangoId: string, payload:any)=>{
-   const data = await Mango.findByIdAndUpdate(mangoId, payload, {
-        new: true,
-        runValidators: true,
-      });
+const updateMangoByIdFromDB = async (mangoId: string, payload: any) => {
+  const data = await Mango.findByIdAndUpdate(mangoId, payload, {
+    new: true,
+    runValidators: true,
+  });
 
+  return data;
+};
+const deleteMangoByIdFromDB = async (mangoId: string) => {
+  const data = await Mango.findByIdAndDelete(mangoId);
 
-      return data
-}
-
-
+  return data;
+};
 
 export const MangoService = {
   createMangoIntoDB,
   getAllMangoFromDB,
   getMangoByIdFromDB,
   updateMangoByIdFromDB,
+  deleteMangoByIdFromDB
 };
