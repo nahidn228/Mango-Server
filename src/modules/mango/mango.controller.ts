@@ -22,7 +22,7 @@ const createMango = async (req: Request, res: Response) => {
 
 const getMango = async (req: Request, res: Response) => {
   try {
-    const mango = await Mango.find();
+    const mango = await MangoService.getAllMangoFromDB();
     res.send({
       success: true,
       message: "Mango getting successfully",
@@ -36,10 +36,13 @@ const getMango = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+
 const getMangoById = async (req: Request, res: Response) => {
   try {
     const mangoId = req.params.mangoId;
-    const mango = await Mango.findById(mangoId);
+    const mango = await MangoService.getMangoByIdFromDB(mangoId);
     res.send({
       success: true,
       message: "Mango getting successfully",
@@ -53,13 +56,12 @@ const getMangoById = async (req: Request, res: Response) => {
     });
   }
 };
+
+
 const updateMango = async (req: Request, res: Response) => {
   try {
     const mangoId = req.params.mangoId;
-    const mango = await Mango.findByIdAndUpdate(mangoId, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const mango = await MangoService.updateMangoByIdFromDB(mangoId, req.body)
     res.send({
       success: true,
       message: "Mango i updated successfully",
@@ -73,6 +75,8 @@ const updateMango = async (req: Request, res: Response) => {
     });
   }
 };
+
+
 const deleteMango = async (req: Request, res: Response) => {
   try {
     const mangoId = req.params.mangoId;
