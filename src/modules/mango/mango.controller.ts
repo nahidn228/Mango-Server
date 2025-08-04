@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Mango from "./mango.model";
 import { MangoService } from "./mango.service";
 import { catchAsync } from "../../utils/catchAsync";
+import { sendResponse } from "../../utils/sendResponse";
 
 // const createMango = async (req: Request, res: Response) => {
 //   try {
@@ -94,20 +95,26 @@ import { catchAsync } from "../../utils/catchAsync";
 
 const createMango = catchAsync(async (req: Request, res: Response) => {
   const data = await MangoService.createMangoIntoDB(req.body);
-  res.send({
+
+  sendResponse(res, {
+    statusCode: 201,
     success: true,
     message: "Mango Created successfully",
-    data,
+    data: data,
   });
 });
 
 const getMango = catchAsync(async (req: Request, res: Response) => {
   const mango = await MangoService.getAllMangoFromDB();
-  res.send({
+
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
     message: "Mango getting successfully",
-    mango,
+    data: mango,
   });
+
+ 
 });
 
 const getMangoById = catchAsync(async (req: Request, res: Response) => {
@@ -134,7 +141,7 @@ const deleteMango = catchAsync(async (req: Request, res: Response) => {
   res.send({
     success: true,
     message: "Mango deleted successfully",
-    mango : null,
+    mango: null,
   });
 });
 
