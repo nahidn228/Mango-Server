@@ -113,35 +113,36 @@ const getMango = catchAsync(async (req: Request, res: Response) => {
     message: "Mango getting successfully",
     data: mango,
   });
-
- 
 });
 
 const getMangoById = catchAsync(async (req: Request, res: Response) => {
   const mangoId = req.params.mangoId;
   const mango = await MangoService.getMangoByIdFromDB(mangoId);
-  res.send({
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
     message: "Mango getting successfully",
-    mango,
+    data: mango,
   });
 });
 const updateMango = catchAsync(async (req: Request, res: Response) => {
   const mangoId = req.params.mangoId;
   const mango = await MangoService.updateMangoByIdFromDB(mangoId, req.body);
-  res.send({
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
     message: "Mango is updated successfully",
-    mango,
+    data: mango,
   });
 });
 const deleteMango = catchAsync(async (req: Request, res: Response) => {
   const mangoId = req.params.mangoId;
   const mango = await MangoService.deleteMangoByIdFromDB(mangoId);
-  res.send({
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
-    message: "Mango deleted successfully",
-    mango: null,
+    message: "Mango is deleted successfully",
+    data: mango,
   });
 });
 

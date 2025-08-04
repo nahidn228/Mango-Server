@@ -38,5 +38,5 @@ export const MangoService = {
   getAllMangoFromDB,
   getMangoByIdFromDB,
   updateMangoByIdFromDB,
-  deleteMangoByIdFromDB
+  deleteMangoByIdFromDB,
 };

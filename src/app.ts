@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { Application, Request, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import routes from "./modules/routes";
 
 const app: Application = express();
@@ -12,6 +12,14 @@ app.get("/", (req: Request, res: Response) => {
   res.send({
     success: true,
     message: "Mango is here",
+  });
+});
+
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  res.status(500).json({
+    success: false,
+    message: err.message || "Something went wrong",
+    err,
   });
 });
 
