@@ -50,7 +50,7 @@ const userSchema = new Schema<IUser>(
     role: {
       type: String,
       enum: {
-        values: ["customer", "admin"],
+        values: ["Customer", "Admin"],
         message: "{VALUE} is not acceptable",
       },
       required: true,
